@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+trainee profile
+{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
+
+    <h1 class="text-2xl font-bold mb-6">
+        {{ trainee.name }}
+    </h1>
+
+    <p class="mb-4">
+        <strong>Email:</strong> {{ trainee.email }}
+    </p>
+
+    {% if trainee.image %}
+    <div class="mb-4">
+        <img src="{{ trainee.image.url }}" alt="{{ trainee.name }}" class="w-full h-auto object-cover rounded">
+    </div>
+    {% endif %}
+
+    <a href="/trainee/update/{{ trainee.id }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Edit Profile
+    </a>
+    <a href="/trainee/delete/{{ trainee.id }}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+        Delete Profile
+    </a>    
+</div>
+{% endblock %}

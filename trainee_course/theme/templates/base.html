@@ -1,0 +1,76 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Intake46
+        {% endblock %}
+    </title>
+
+    {% tailwind_css %}
+</head>
+
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
+<!-- NAVBAR -->
+<nav class="bg-gray-900 text-white shadow">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+
+            <!-- Logo -->
+            <div class="font-bold text-xl">
+                <a href="/" class="hover:text-gray-300">Intake46</a>
+            </div>
+
+            <!-- Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="/" class="hover:text-gray-300">Home</a>
+                <a href="/trainee" class="hover:text-gray-300">Trainees</a>
+                <a href="/course" class="hover:text-gray-300">Courses</a>
+            </div>
+
+            <!-- Mobile button -->
+            <button id="menu-btn" class="md:hidden text-2xl">
+                ☰
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-4 pb-4 space-y-2">
+        <a href="/" class="block hover:text-gray-300">Home</a>
+        <a href="/trainee" class="block hover:text-gray-300">Trainees</a>
+        <a href="/course" class="block hover:text-gray-300">Courses</a>
+    </div>
+</nav>
+
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 py-6">
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+<footer class="bg-gray-900 text-white text-center py-4 mt-auto">
+    <p>© 2026 Intake46 - All Rights Reserved</p>
+</footer>
+
+<script>
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
+
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+</script>
+
+{% block js %}
+{% endblock %}
+
+</body>
+</html>
