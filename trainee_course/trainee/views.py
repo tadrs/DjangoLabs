@@ -22,7 +22,7 @@ class TraineeCreate(View):
         return render(request, 'trainee/create.html', {'form': form})  
     
     def post(self, request):
-        form = TraineeFormModel(request.POST)
+        form = TraineeFormModel(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             return redirect('traineeList')
